@@ -36,4 +36,6 @@ Tags: e-commerce, custom menu, custom-logo, featured-images, theme-options, tran
 .main-menu ul li a {
     text-decoration: none;
 }
-
+.container {
+    background: #1bd760;
+}

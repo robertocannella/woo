@@ -23,7 +23,8 @@
                         <div class="main-menu">
                             <?php wp_nav_menu([
                                  'theme_location' =>   'rc_woo_main_menu'
-                                ])?></div>
+                                ])?>
+                        </div>
                     </div>
                 </div>
             </div>
