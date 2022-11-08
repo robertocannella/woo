@@ -19,3 +19,14 @@ function rc_woo_scripts(){
     wp_enqueue_style( 'rc-woo-style', get_stylesheet_uri(), [], filemtime( get_template_directory() . '/style.css' ), 'all');
 }
 add_action('wp_enqueue_scripts', 'rc_woo_scripts');
+
+
+function rc_woo_config() {
+    register_nav_menus([
+        'rc_woo_main_menu'  => 'RC Woo Main Menu',
+        'rc_woo_footer_menu'=> 'RC Woo Footer Menu'
+    ]);
+
+
+}
+add_action('after_setup_theme', 'rc_woo_config', 0);
