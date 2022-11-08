@@ -38,7 +38,25 @@ get_header(); ?>
             </section>
             <section class="woo-blog">
                 <div class="container">
-                    <div class="row">Newss</div>
+                    <div class="row">
+
+                        <?php
+                        if (have_posts()):
+                            while (have_posts()): the_post();
+                                ?>
+                                <article>
+                                    <h2><?php the_title(); ?> </h2>
+                                    <div><?php the_content(); ?></div>
+                                </article>
+
+                            <?php
+                            endwhile;
+                        else:
+                        ?>
+                            <h2>Nothing to display.</h2>
+                        <?php endif; ?>
+
+                    </div>
                 </div>
             </section>
 
