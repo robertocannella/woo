@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file
+ * The page template file
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -16,7 +16,6 @@ get_header(); ?>
 
     <div class="content-area">
         <div class="main">
-            <section class="woo-blog">
                 <div class="container">
                     <div class="row">
 
@@ -25,20 +24,19 @@ get_header(); ?>
                             while (have_posts()): the_post();
                                 ?>
                                 <article>
-                                    <h2><?php the_title(); ?> </h2>
+                                    <h1><?php the_title(); ?> </h1>
                                     <div><?php the_content(); ?></div>
                                 </article>
 
                             <?php
                             endwhile;
                         else:
-                        ?>
+                            ?>
                             Nothing to display.
                         <?php endif; ?>
 
                     </div>
                 </div>
-            </section>
 
         </div>
     </div>
