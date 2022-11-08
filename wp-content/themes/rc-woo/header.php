@@ -20,7 +20,10 @@
                     <div class="brand col-3">Logo</div>
                     <div class="second-column col-9">
                         <div class="account">Account</div>
-                        <div class="main-menu">Menu</div>
+                        <div class="main-menu">
+                            <?php wp_nav_menu([
+                                 'theme_location' =>   'rc_woo_main_menu'
+                                ])?></div>
                     </div>
                 </div>
             </div>
