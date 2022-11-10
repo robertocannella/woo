@@ -76,3 +76,12 @@ footer-widgets ul {
 .footer-menu ul li.current-menu-item *{
     color: #ff9292;
 }
+
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+    max-width: 100%;
+    height: auto;
+}

@@ -30,3 +30,28 @@ function rc_woo_config() {
 
 }
 add_action('after_setup_theme', 'rc_woo_config', 0);
+
+//Add WooCommerce Support
+function rc_woo_add_woocommerce_support() {
+    add_theme_support( 'woocommerce', array(
+        'thumbnail_image_width' => 150,
+        'single_image_width'    => 300,
+
+        'product_grid'          => array(
+            'default_rows'    => 3,
+            'min_rows'        => 2,
+            'max_rows'        => 10,
+            'default_columns' => 1,
+            'min_columns'     => 1,
+            'max_columns'     => 1,
+        ),
+    ) );
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+
+    if ( ! isset( $content_width ) ) {
+        $content_width = 600;
+    }
+}
+add_action( 'after_setup_theme', 'rc_woo_add_woocommerce_support' );
