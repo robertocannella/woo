@@ -46,5 +46,12 @@ function rc_woo_add_woocommerce_support() {
             'max_columns'     => 1,
         ),
     ) );
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+
+    if ( ! isset( $content_width ) ) {
+        $content_width = 600;
+    }
 }
 add_action( 'after_setup_theme', 'rc_woo_add_woocommerce_support' );
