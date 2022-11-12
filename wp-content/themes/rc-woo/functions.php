@@ -63,7 +63,7 @@ function rc_woo_sidebars(){
         'id' => 'rc-woo-sidebar-1',
         'description' => 'Drag and Drop your widgets here!',
         'before_widget' => '<section id="%1$s" class="widget widget-wrapper %2$s">',
-        'after_widget' => '</div>',
+        'after_widget' => '</section>',
         'before_title' => '<h4 class=widget-title>',
         'after_title'=> '</h4>'
     ]);
@@ -76,19 +76,17 @@ function rc_woo_open_container_row(){
     echo '<div class="container shop-content"><div class="row">';
 }
 
-add_action('woocommerce_after_shop_loop', 'rc_woo_close_container_row',5);
+add_action('woocommerce_after_main_content', 'rc_woo_close_container_row',5);
 function rc_woo_close_container_row(){
     echo '</div></div>';
 }
 
-function rc_woo_add_sidebar_tags(){
-    echo '<div class="sidebar-shop col-lg-9 col-md-8 col-12">';
-}
-add_action('woocommerce_before_main_content', 'rc_woo_add_sidebar_tags',6);
+// Change the order of the sidebar display
 remove_action('woocommerce_sidebar','woocommerce_get_sidebar');
 add_action('woocommerce_before_main_content','woocommerce_get_sidebar',7);
 
-function rc_woo_close_sidebar_tags(){
-    echo '</div>';
+
+function rc_woo_open_main_content (){
+    echo '<div class="sidebar-shop col-lg-9 col-md-8 col-12">';
 }
-add_action('woocommerce_before_main_content','rc_woo_close_sidebar_tags',8);
+add_action('woocommerce_before_main_content', 'rc_woo_open_main_content', 9);
