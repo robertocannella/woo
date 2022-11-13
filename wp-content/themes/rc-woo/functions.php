@@ -58,6 +58,7 @@ add_action( 'after_setup_theme', 'rc_woo_add_woocommerce_support' );
 
 
 function rc_woo_sidebars(){
+
     register_sidebar([
         'name' => 'RC Woo Main Sidebar',
         'id' => 'rc-woo-sidebar-1',
@@ -67,26 +68,63 @@ function rc_woo_sidebars(){
         'before_title' => '<h4 class=widget-title>',
         'after_title'=> '</h4>'
     ]);
+
+    register_sidebar([
+        'name' => 'RC Woo WooCommerce Sidebar',
+        'id' => 'rc-woo-sidebar-2',
+        'description' => 'Drag and Drop your widgets here!',
+        'before_widget' => '<section id="%1$s" class="widget widget-wrapper %2$s">',
+        'after_widget' => '</section>',
+        'before_title' => '<h4 class=widget-title>',
+        'after_title'=> '</h4>'
+    ]);
 }
 
 add_action( 'widgets_init','rc_woo_sidebars');
-
-add_action('woocommerce_before_main_content', 'rc_woo_open_container_row',5);
-function rc_woo_open_container_row(){
-    echo '<div class="container shop-content"><div class="row">';
+if (class_exists('WooCommerce')){
+    require get_template_directory() . '/inc/wp-modifications.php';
 }
 
-add_action('woocommerce_after_main_content', 'rc_woo_close_container_row',5);
-function rc_woo_close_container_row(){
-    echo '</div></div>';
+require get_template_directory() . '/inc/rc-tiny-mce.php';
+// TEST CODE BELOW HERE
+// show a custom login message above the login form
+function custom_login_message( $message ) {
+    if ( empty( $message ) ) {
+        return "<h2>Welcome to Let's Develop by Salman Ravoof! Please log in to start learning.</h2>";
+    }
+    else {
+        return $message;
+    }
 }
 
-// Change the order of the sidebar display
-remove_action('woocommerce_sidebar','woocommerce_get_sidebar');
-add_action('woocommerce_before_main_content','woocommerce_get_sidebar',7);
 
 
-function rc_woo_open_main_content (){
-    echo '<div class="sidebar-shop col-lg-9 col-md-8 col-12">';
+
+/**
+ * Redirect user after successful login.
+ *
+ * @param string $redirect_to URL to redirect to.
+ * @param string $request URL the user is coming from.
+ * @param object $user Logged user's data.
+ * @return string
+ */
+
+
+function my_login_redirect( $redirect_to, $request, $user ) {
+
+    //is there a user to check?
+    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+        //check for admins
+        if ( in_array( 'administrator', $user->roles ) ) {
+            // redirect them to the default place
+            return $redirect_to;
+        } else {
+            return home_url();
+            echo home_url();
+        }
+    } else {
+        return $redirect_to;
+    }
 }
-add_action('woocommerce_before_main_content', 'rc_woo_open_main_content', 9);
+
+//add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
