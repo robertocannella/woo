@@ -4,7 +4,9 @@
     <include_path>
       <path value="$PROJECT_DIR$/wp-includes" />
       <path value="/Applications/wordpress/wp-includes" />
+      <path value="" />
+      <path value="/Applications/wordpress/plugins" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
 </project>

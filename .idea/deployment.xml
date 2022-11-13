@@ -6,7 +6,7 @@
       <paths name="woo">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/wp-content" local="$PROJECT_DIR$/wp-content" web="/" />
           </mappings>
         </serverdata>
       </paths>
