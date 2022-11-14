@@ -8,7 +8,16 @@
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <?php wp_head() ?>
 </head>
-<body <?php  body_class();?>>
+<body <?php
+    if (class_exists('WooCommerce')){
+        if (is_account_page() && !is_user_logged_in()){
+            body_class('account-page');
+        }
+    }else{
+        body_class();
+    }
+
+    ?>>
 <div id="page" class="site">
     <header>
         <section class="search">

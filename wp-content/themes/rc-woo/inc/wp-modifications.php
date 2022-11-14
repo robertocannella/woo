@@ -5,6 +5,8 @@
  * @package RC Woo
  */
 
+
+
 function rc_woo_wc_modify (){
 
     remove_action('woocommerce_sidebar','woocommerce_get_sidebar');
@@ -22,7 +24,6 @@ function rc_woo_wc_modify (){
     {
         echo '</div></div>';
     }
-
 
     if (is_shop() ) {
 

@@ -1,5 +1,5 @@
 
-<footer>
+<footer class="mt-5 pt-5">
      <section class="footer-widgets">
             <div class="container">
                 <div class="row">Footer Widgets</div>

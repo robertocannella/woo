@@ -205,3 +205,30 @@ Tags: e-commerce, custom menu, custom-logo, featured-images, theme-options, tran
     max-width: 100%;
     height: auto;
 }
+
+/* Password Toggle */
+#togglePassword:before {
+    display:inline-block;
+    position: relative
+}
+#togglePassword {
+    margin-right: 30px;
+    z-index: 999;
+    top: 12px;
+    right: 1px;
+    color: darkgrey;
+    cursor: pointer;
+    position: absolute;
+}
+.fa-eye-slash {
+    color: black!important;
+}
+
+/*Backdrop*/
+.account-page {
+    background-color: #c4c4c4;
+} 
+ /*Bootstrap*/
+.form-check-input{
+    cursor: pointer;
+}
