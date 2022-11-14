@@ -9,14 +9,17 @@
     <?php wp_head() ?>
 </head>
 <body <?php
-    if (class_exists('WooCommerce')){
-        if (is_account_page() && !is_user_logged_in()){
+    if (class_exists('WooCommerce')):
+        if (is_account_page() && !is_user_logged_in()):
             body_class('account-page');
-        }
-    }else{
+        else:
+            body_class();
+        endif;
+    else:
         body_class();
-    }
+    endif;
 
+    body_class();
     ?>>
 <div id="page" class="site">
     <header>

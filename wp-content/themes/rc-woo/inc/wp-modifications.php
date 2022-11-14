@@ -27,14 +27,6 @@ function rc_woo_wc_modify (){
 
     if (is_shop() ) {
 
-        ?>
-
-        <script>
-            console.log("Inside Shop Function");
-        </script>
-
-        <?php
-
         function rc_woo_woocommerce_get_sidebar(){?>
             <aside class="col-lg-3 col-md-4 col-12 h-100">
             <?php dynamic_sidebar('rc-woo-sidebar-2'); ?>
