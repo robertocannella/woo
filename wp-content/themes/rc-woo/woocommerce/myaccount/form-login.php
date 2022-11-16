@@ -25,9 +25,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 <div class="container" id="customer_login">
     <div class="row">
-
         <?php endif; ?>
-
 
         <!-- Button trigger modal -->
 <!--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->

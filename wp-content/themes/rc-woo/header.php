@@ -11,6 +11,7 @@
 <body <?php
     if (class_exists('WooCommerce')):
         if (is_account_page() && !is_user_logged_in()):
+            wp_enqueue_script( 'r-woo-js', get_template_directory_uri() . '/inc/js/rc-woo.js', [], '1.0', true );
             body_class('account-page');
         else:
             body_class();
