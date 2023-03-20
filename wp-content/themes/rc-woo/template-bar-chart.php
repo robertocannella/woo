@@ -5,25 +5,8 @@
  * @package RC Woo
  */
 
-// inline scripts via wp_add_inline_script()
-function shapeSpace_enqueue_scripts() {
-    echo 'enqueueing shapeSpace';
-
-    wp_enqueue_script('shapeSpace_script', get_template_directory_uri() .'/inc/js/script.js', array(), '1.0', true);
-
-    $script  = 'var1 = '. json_encode('donkey') .'; ';
-    $script .= 'var2 = '. json_encode('var2') .'; ';
-    $script .= 'var3 = '. json_encode('var3') .'; ';
-
-    wp_add_inline_script('shapeSpace_script', $script, 'before');
-
-}
-add_action('wp_print_scripts', 'shapeSpace_enqueue_scripts');
 get_header();
-
-
 echo '<h1>Bar Chart </h1>';
-
 
                 if (have_posts()):
                     while (have_posts()): the_post();
@@ -70,29 +53,42 @@ echo '<h1>Bar Chart </h1>';
                                     }
                                 }
                                 $aDataTableDetailHTML = $aTempData; unset($aTempData);
-                                $script  = 'var1 = '. json_encode($aDataTableDetailHTML) .'; ';
+
+                                $script  = 'customTitle = '. json_encode(get_the_title()) .'; ';
+                                $script  .= 'themeParams = '. json_encode($aDataTableDetailHTML) .'; ';
+                                $script  .= 'var1 = '. json_encode($aDataTableDetailHTML) .'; ';
+
 
                                 wp_enqueue_script('barChart', get_template_directory_uri() . '/inc/js/barChart.js', ['jquery'],'1',true );
-                                wp_add_inline_script( 'barChart', 'var themeParams = ' . wp_json_encode( $aDataTableDetailHTML ), 'before' );
+                                wp_add_inline_script( 'barChart', $script, 'before' );
 
                                 add_action('wp_print_scripts', 'barChart');
 
-                                return $content . esc_html__( 'I’m filtering the content inside the main loop', 'wporg');
                             }
 
-                            return $content;
+                           // return $content;
                         }
 
 
                         ?>
+                        <article>
+                            <div><?php the_content(); ?></div>
+                        </article>
+
                     <?php
                     endwhile;
                 else:
                     ?>
                     <h2>Nothing to display.</h2>
-                <?php endif;
-
-echo '<canvas id="bar-chart" width="800" height="450"></canvas>';
+                <?php endif; ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <canvas class="rc-chart" id="bar-chart" width="800" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+<?php
 
 
 get_footer();
